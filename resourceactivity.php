@@ -16,7 +16,8 @@
 require_once 'resourceactivity.civix.php';
 // phpcs:disable
 use CRM_Resourceactivity_ExtensionUtil as E;
-use Civi\Api4\Managed;
+use Civi\Resourceactivity\ResourceAssignmentSubscriber;
+use Civi\Api4;
 // phpcs:enable
 
 /**
@@ -26,6 +27,8 @@ use Civi\Api4\Managed;
  */
 function resourceactivity_civicrm_config(&$config) {
   _resourceactivity_civix_civicrm_config($config);
+
+  Civi::dispatcher()->addSubscriber(new ResourceAssignmentSubscriber());
 }
 
 /**
@@ -47,7 +50,7 @@ function resourceactivity_civicrm_postInstall(): void {
 
   // Reconcile managed entities again for our custom group to pick up the
   // correct activity type to be attached to.
-  Managed::reconcile(FALSE)
+  Api4\Managed::reconcile(FALSE)
     ->addModule(E::LONG_NAME)
     ->execute();
 
