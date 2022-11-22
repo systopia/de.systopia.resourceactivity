@@ -174,7 +174,33 @@ function resourceactivity_civicrm_managed(&$entities) {
     'match' => ['name'],
   ];
 
-  // Synchronise custom field for storing resource demand on activity objects.
+  // Synchronise custom fields for storing resource and resource demand on
+  // activity objects.
+  $entities[] = [
+    'module' => E::LONG_NAME,
+    'name' => 'CustomField__activity_resource_information__resource',
+    'entity' => 'CustomField',
+    'cleanup' => 'always',
+    'update' => 'unmodified',
+    'params' => [
+      'version' => 4,
+      'values' => [
+        'name' => 'resource',
+        'label' => 'Resource',
+        'custom_group_id.name' => 'activity_resource_information',
+        'html_type' => 'Text',
+        'data_type' => 'Int',
+        'is_required' => 1,
+        'is_searchable' => 0,
+        'is_search_range' => 0,
+        'is_view' => 1,
+        'in_selector' => 0,
+        'column_name' => 'resource'
+      ],
+    ],
+    'match' => ['custom_group_id.name', 'name'],
+  ];
+
   $entities[] = [
     'module' => E::LONG_NAME,
     'name' => 'CustomField__activity_resource_information__resource_demand',
