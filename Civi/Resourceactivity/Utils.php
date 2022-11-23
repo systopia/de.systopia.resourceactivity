@@ -15,7 +15,7 @@
 
 namespace Civi\Resourceactivity;
 
-use Civi\Api4\OptionValue;
+use Civi\Api4;
 use CRM_Resourceactivity_ExtensionUtil as E;
 
 class Utils {
@@ -25,7 +25,7 @@ class Utils {
    * @throws \Civi\API\Exception\UnauthorizedException
    */
   public static function getResourceActivityType($map = FALSE) {
-    $activity_type = OptionValue::get(FALSE)
+    $activity_type = Api4\OptionValue::get(FALSE)
       ->addSelect('value', 'label')
       ->addWhere('option_group_id.name', '=', 'activity_type')
       ->addWhere('name', '=', 'resource_assignment')
@@ -46,7 +46,7 @@ class Utils {
     if (!$status_id = \Civi::settings()->get('resourceactivity_activity_status_id_' . strtolower($type))) {
       // If no specific status is configured, use the reserved one ("Scheduled"
       // or "Cancelled").
-      $activity_statuses = OptionValue::get()
+      $activity_statuses = Api4\OptionValue::get()
         ->addSelect('value')
         ->addWhere('option_group_id:name', '=', 'activity_status')
         ->addWhere('is_active', '=', TRUE)
