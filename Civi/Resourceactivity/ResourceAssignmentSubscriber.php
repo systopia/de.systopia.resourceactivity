@@ -53,6 +53,7 @@ class ResourceAssignmentSubscriber implements EventSubscriberInterfaceAlias {
       switch ($activities->count()) {
         case 0:
           $activity_create = Activity::create(FALSE)
+            ->addValue('source_contact_id', \CRM_Core_Session::getLoggedInContactID())
             ->addValue('activity_type_id', $resource_activity_type)
             ->addValue('activity_resource_information.resource', $resource['id'])
             ->addValue('activity_resource_information.resource_demand', $resource_demand['id'])
