@@ -40,7 +40,7 @@ class Utils {
    * @throws \Exception
    */
   public static function getDefaultActivityStatus($type) {
-    if (!in_array(strtolower($type), ['Scheduled', 'Cancelled'])) {
+    if (!in_array(strtolower($type), ['scheduled', 'cancelled'])) {
       throw new \Exception(E::ts('Unknown activity status class %1.', [1 => $type]));
     }
     if (!$status_id = \Civi::settings()->get('resourceactivity_activity_status_id_' . strtolower($type))) {
