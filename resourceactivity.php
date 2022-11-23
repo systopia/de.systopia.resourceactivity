@@ -138,7 +138,7 @@ function resourceactivity_civicrm_managed(&$entities) {
       'values' => [
         'option_group_id.name' => 'activity_type',
         'name' => 'resource_assignment',
-        'label' => 'Resource Assignment',
+        'label' => E::ts('Resource Assignment'),
         'description' => E::ts('CiviResource Activity resource assignments'),
         'is_reserved' => TRUE,
         'is_active' => TRUE,
@@ -159,7 +159,7 @@ function resourceactivity_civicrm_managed(&$entities) {
       'version' => 4,
       'values' => [
         'name' => 'activity_resource_information',
-        'title' => 'Resource Information',
+        'title' => E::ts('Resource Information'),
         'extends' => 'Activity',
         'extends_entity_column_value' => Api4\OptionValue::get(FALSE)
           ->addSelect('value')
@@ -188,7 +188,7 @@ function resourceactivity_civicrm_managed(&$entities) {
       'version' => 4,
       'values' => [
         'name' => 'resource',
-        'label' => 'Resource',
+        'label' => E::ts('Resource'),
         'custom_group_id.name' => 'activity_resource_information',
         'html_type' => 'Text',
         'data_type' => 'Int',
@@ -213,7 +213,7 @@ function resourceactivity_civicrm_managed(&$entities) {
       'version' => 4,
       'values' => [
         'name' => 'resource_demand',
-        'label' => 'Resource Demand',
+        'label' => E::ts('Resource Demand'),
         'custom_group_id.name' => 'activity_resource_information',
         'html_type' => 'Text',
         'data_type' => 'Int',
