@@ -159,7 +159,7 @@ function resourceactivity_civicrm_managed(&$entities) {
       'version' => 4,
       'values' => [
         'name' => 'activity_resource_information',
-        'title' => 'Activity Resource Information',
+        'title' => 'Resource Information',
         'extends' => 'Activity',
         'extends_entity_column_value' => Api4\OptionValue::get(FALSE)
           ->addSelect('value')
@@ -169,6 +169,7 @@ function resourceactivity_civicrm_managed(&$entities) {
           ->column('value'),
         // Note: "is_reserved" hides the custom field group in the UI.
         'is_reserved' => 1,
+        'style' => 'Inline',
         'table_name' => 'civicrm_value_activity_resource_information',
       ],
     ],
