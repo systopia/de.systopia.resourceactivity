@@ -57,14 +57,17 @@ class ResourceAssignmentSubscriber implements EventSubscriberInterfaceAlias {
             ->addValue('activity_type_id', $resource_activity_type)
             ->addValue('activity_resource_information.resource', $resource['id'])
             ->addValue('activity_resource_information.resource_demand', $resource_demand['id'])
-            ->addValue('status_id', Utils::getDefaultActivityStatus('Scheduled'))
-            ->addValue('activity_date_time', date('Y-m-d H:i:s'));
+            ->addValue('status_id', Utils::getDefaultActivityStatus('Scheduled'));
 
           // Calculate total duration (in minutes) from the demand's timeframes.
-          $duration = 0;
           $timeframes = \CRM_Resource_BAO_ResourceDemand::getInstance($resource_demand['id'])
             ->getResourcesBlockedTimeframes()
             ->getTimeframes();
+          if (!empty($timeframes)) {
+            $activity_create
+              ->addValue('activity_date_time', date('Y-m-d H:i:s', $timeframes[0][0]));
+          }
+          $duration = 0;
           foreach ($timeframes as [$from, $to]) {
             $duration += ($to - $from) / 60;
           }
