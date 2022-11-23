@@ -126,8 +126,6 @@ function resourceactivity_civicrm_entityTypes(&$entityTypes): void {
  * @link https://docs.civicrm.org/dev/en/latest/hooks/hook_civicrm_managed
  */
 function resourceactivity_civicrm_managed(&$entities) {
-  _resourceactivity_civix_civicrm_managed($entities);
-
   // Synchronise activity type.
   $entities[] = [
     'module' => E::LONG_NAME,

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<menu>
+    <item>
+        <!-- Build a settings form from settings metadata. -->
+        <path>civicrm/admin/setting/resourceactivity</path>
+        <page_callback>CRM_Admin_Form_Generic</page_callback>
+        <title>CiviResource Activity Settings</title>
+        <access_arguments>administer CiviCRM</access_arguments>
+        <desc>Settings for CiviResource related to activities.</desc>
+        <adminGroup>CiviResource</adminGroup>
+    </item>
+</menu>

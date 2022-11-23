@@ -43,7 +43,7 @@ class Utils {
     if (!in_array(strtolower($type), ['Scheduled', 'Cancelled'])) {
       throw new \Exception(E::ts('Unknown activity status class %1.', [1 => $type]));
     }
-    if (!$status_id = \Civi::settings()->get('resourceactivity_default_participant_status_id_' . strtolower($type))) {
+    if (!$status_id = \Civi::settings()->get('resourceactivity_activity_status_id_' . strtolower($type))) {
       // If no specific status is configured, use the reserved one ("Scheduled"
       // or "Cancelled").
       $activity_statuses = OptionValue::get()
