@@ -233,5 +233,5 @@ function resourceactivity_civicrm_managed(&$entities) {
  * Implements hook_civicrm_alterCustomFieldDisplayValue().
  */
 function resourceactivity_civicrm_alterCustomFieldDisplayValue(&$displayValue, $value, $entityId, $fieldInfo) {
-  \Civi\Resourceactivity\Utils::alterCustomFieldValues(&$displayValue, $value, $entityId, $fieldInfo);
+  \Civi\Resourceactivity\Utils::alterCustomFieldValues($displayValue, $value, $entityId, $fieldInfo);
 }
