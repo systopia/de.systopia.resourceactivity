@@ -60,4 +60,66 @@ class Utils {
     return $status_id;
   }
 
+  /**
+   * Displays resource and resource demand labels and links to connected
+   * entities in respective custom fields on activities.
+   *
+   * @param $displayValue
+   * @param $value
+   * @param $entityId
+   * @param $fieldInfo
+   *
+   * @return void
+   */
+  public static function alterCustomFieldValues(&$displayValue, $value, $entityId, $fieldInfo) {
+    static $resourceactivity_fields;
+    if (!isset($resourceactivity_fields)) {
+      $resourceactivity_fields = Api4\CustomField::get(FALSE)
+        ->addSelect('id')
+        ->addWhere('custom_group_id.name', '=', 'activity_resource_information')
+        ->execute()
+        ->column('id');
+    }
+    if (in_array($fieldInfo['id'], $resourceactivity_fields)) {
+      switch ($fieldInfo['name']) {
+        case 'resource':
+          // Display resource label and link to connected entity.
+          $resource = Api4\Resource::get(FALSE)
+            ->addSelect('entity_table', 'entity_id', 'label')
+            ->addWhere('id', '=', $value)
+            ->execute()
+            ->single();
+          $link = \CRM_Utils_System::createDefaultCrudLink([
+            'action' => 'view',
+            'entity_table' => $resource['entity_table'],
+            'id' => $resource['entity_id']
+          ]);
+          $displayValue = sprintf('%s (<a href="%s&selectedChild=resource">%s</a>)',
+            htmlspecialchars($resource['label']),
+            htmlspecialchars($link['url']),
+            htmlspecialchars($link['title'])
+          );
+          break;
+        case 'resource_demand':
+          // Display resource demand label and link to connected entity.
+          $resource_demand = Api4\ResourceDemand::get(FALSE)
+            ->addSelect('entity_table', 'entity_id', 'label')
+            ->addWhere('id', '=', $value)
+            ->execute()
+            ->single();
+          $link = \CRM_Utils_System::createDefaultCrudLink([
+            'action' => 'view',
+            'entity_table' => $resource_demand['entity_table'],
+            'id' => $resource_demand['entity_id']
+          ]);
+          $displayValue = sprintf('%s (<a href="%s">%s</a>)',
+            htmlspecialchars($resource_demand['label']),
+            htmlspecialchars($link['url']),
+            htmlspecialchars($link['title'])
+          );
+          break;
+      }
+    }
+  }
+
 }

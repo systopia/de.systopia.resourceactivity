@@ -228,3 +228,10 @@ function resourceactivity_civicrm_managed(&$entities) {
     'match' => ['custom_group_id.name', 'name'],
   ];
 }
+
+/**
+ * Implements hook_civicrm_alterCustomFieldDisplayValue().
+ */
+function resourceactivity_civicrm_alterCustomFieldDisplayValue(&$displayValue, $value, $entityId, $fieldInfo) {
+  \Civi\Resourceactivity\Utils::alterCustomFieldValues(&$displayValue, $value, $entityId, $fieldInfo);
+}
