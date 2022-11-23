@@ -16,6 +16,7 @@
 namespace Civi\Resourceactivity;
 
 use Civi\Api4\Activity;
+use Civi\Api4\Entity;
 use Civi\Api4\Resource;
 use Civi\Api4\ResourceDemand;
 use Civi\Core\DAO\Event\PostDelete;
@@ -52,12 +53,30 @@ class ResourceAssignmentSubscriber implements EventSubscriberInterfaceAlias {
         ->execute();
       switch ($activities->count()) {
         case 0:
+          $demand_entity_info = Entity::get(FALSE)
+            ->addSelect('name', 'title', 'label_field')
+            ->addWhere('table_name', '=', $resource_demand['entity_table'])
+            ->execute()
+            ->single();
+          $demand_entity = civicrm_api4($demand_entity_info['name'], 'get', [
+            'select' => ['id', $demand_entity_info['label_field']],
+            'where' => [['id', '=', $resource_demand['entity_id']]],
+          ])->single();
           $activity_create = Activity::create(FALSE)
             ->addValue('source_contact_id', \CRM_Core_Session::getLoggedInContactID())
             ->addValue('activity_type_id', $resource_activity_type)
             ->addValue('activity_resource_information.resource', $resource['id'])
             ->addValue('activity_resource_information.resource_demand', $resource_demand['id'])
-            ->addValue('status_id', Utils::getDefaultActivityStatus('Scheduled'));
+            ->addValue('status_id', Utils::getDefaultActivityStatus('Scheduled'))
+            ->addValue('subject', E::ts(
+              'Resource %1 assigned to resource demand %2 for %3 %4',
+              [
+                1 => $resource['label'],
+                2 => $resource_demand['label'],
+                3 => $demand_entity_info['title'],
+                4 => $demand_entity[$demand_entity_info['label_field']],
+              ]
+            ));
 
           // Calculate total duration (in minutes) from the demand's timeframes.
           $timeframes = \CRM_Resource_BAO_ResourceDemand::getInstance($resource_demand['id'])
