@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <extension key="de.systopia.resourceactivity" type="module">
   <file>resourceactivity</file>
-  <name>de.systopia.resourceactivity</name>
+  <name>CiviResource Activity</name>
   <description>CiviResource resource management coupled with CiviCRM activities.</description>
   <license>AGPL-3.0</license>
   <maintainer>
