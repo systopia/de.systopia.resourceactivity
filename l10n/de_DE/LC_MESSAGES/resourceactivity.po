@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+#: Civi/Resourceactivity/ResourceAssignmentSubscriber.php
+msgid "Resource %1 assigned to resource demand %2 for %3 %4"
+msgstr "Ressource %1 wurde dem Bedarf %2 von %3 %4 zugewiesen"
+
+#: Civi/Resourceactivity/ResourceAssignmentSubscriber.php
+msgid "More than one activity found for resource %1 and resource demand %2."
+msgstr ""
+"Mehr als eine Aktivität für Ressource %1 und Ressourcenbedarf %2 gefunden."
+
+#: Civi/Resourceactivity/Utils.php
+msgid "Unknown activity status class %1."
+msgstr "Unbekannte Aktivitätsstatussklasse %1."
+
+#: Civi/Resourceactivity/Utils.php
+msgid "No active activity status %1"
+msgstr "Kein Aktivitätsstatus %1"
+
+#: resourceactivity.php
+msgid "Resource Assignment"
+msgstr "Ressourcenzuweisung"
+
+#: resourceactivity.php
+msgid "CiviResource Activity resource assignments"
+msgstr "Ressourcenzuweisungen für CiviResource Activity"
+
+#: resourceactivity.php
+msgid "Resource Information"
+msgstr "Ressourceninformationen"
+
+#: resourceactivity.php
+msgid "Resource"
+msgstr "Ressource"
+
+#: resourceactivity.php
+msgid "Resource Demand"
+msgstr "Ressourcenbedarf"
+
+#: settings/resourceactivity.setting.php
+msgid "CiviResource Activity Settings"
+msgstr "Einstellungen für CiviResource Activity"
+
+#: settings/resourceactivity.setting.php
+msgid "Default activity status for assigned resource"
+msgstr "Standardaktivitätsstatus für zugewiesene Ressource"
+
+#: settings/resourceactivity.setting.php
+msgid ""
+"Default activity status to set activities to when assigning a resource. If "
+"left unset, the \"Scheduled\" activity status is being used."
+msgstr ""
+"Für Aktivitäten beim Zuweisen einer Ressource zu verwendender "
+"Standardaktivitätsstatus. Wenn nicht gesetzt, wird der Aktivitätsstatus "
+"\"Geplant\" verwendet."
+
+#: settings/resourceactivity.setting.php
+msgid "Default activity status for unassigned resource"
+msgstr "Standardaktivitätsstatus für unzugewiesene Ressource"
+
+#: settings/resourceactivity.setting.php
+msgid ""
+"Default activity status to set activities to when unassigning a resource. If "
+"left unset, the \"Cancelled\" activity status is being used."
+msgstr ""
+"Für Aktivitäten beim Entfernen einer Ressourcenzuweisung zu verwendender "
+"Standardaktivitätsstatus. Wenn nicht gesetzt, wird der Aktivitätsstatus "
+"\"Storniert\" verwendet."
