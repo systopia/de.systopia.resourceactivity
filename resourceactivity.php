@@ -192,7 +192,9 @@ function resourceactivity_civicrm_managed(&$entities) {
         'custom_group_id.name' => 'activity_resource_information',
         'html_type' => 'Text',
         'data_type' => 'Int',
-        'is_required' => 1,
+        // Do not make the field required for allowing manually creating
+        // activities of that type.
+        'is_required' => 0,
         'is_searchable' => 0,
         'is_search_range' => 0,
         'is_view' => 1,
