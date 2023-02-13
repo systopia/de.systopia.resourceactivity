@@ -1,0 +1,56 @@
+#: ./Civi/Resourceactivity/ResourceAssignmentSubscriber.php
+msgid "Resource %1 assigned to resource demand %2 for %3 %4"
+msgstr ""
+
+#: ./Civi/Resourceactivity/ResourceAssignmentSubscriber.php
+msgid "More than one activity found for resource %1 and resource demand %2."
+msgstr ""
+
+#: ./Civi/Resourceactivity/Utils.php
+msgid "Unknown activity status class %1."
+msgstr ""
+
+#: ./Civi/Resourceactivity/Utils.php
+msgid "No active activity status %1"
+msgstr ""
+
+#: ./resourceactivity.php
+msgid "Resource Assignment"
+msgstr ""
+
+#: ./resourceactivity.php
+msgid "CiviResource Activity resource assignments"
+msgstr ""
+
+#: ./resourceactivity.php
+msgid "Resource Information"
+msgstr ""
+
+#: ./resourceactivity.php
+msgid "Resource"
+msgstr ""
+
+#: ./resourceactivity.php
+msgid "Resource Demand"
+msgstr ""
+
+#: ./settings/resourceactivity.setting.php
+msgid "CiviResource Activity Settings"
+msgstr ""
+
+#: ./settings/resourceactivity.setting.php
+msgid "Default activity status for assigned resource"
+msgstr ""
+
+#: ./settings/resourceactivity.setting.php
+msgid "Default activity status to set activities to when assigning a resource. If left unset, the \"Scheduled\" activity status is being used."
+msgstr ""
+
+#: ./settings/resourceactivity.setting.php
+msgid "Default activity status for unassigned resource"
+msgstr ""
+
+#: ./settings/resourceactivity.setting.php
+msgid "Default activity status to set activities to when unassigning a resource. If left unset, the \"Cancelled\" activity status is being used."
+msgstr ""
+
